@@ -7,16 +7,25 @@ const routes = [
         path: '/',
         name: 'Home',
         component: Home,
+        meta: { // Доп данные
+            layout: 'main',
+        },
     },
     {
         path: '/help',
         name: 'Help',
         component: () => import('../views/Help.vue'),
+        meta: {
+            layout: 'main',
+        },
     },
     {
-        path: '/help',
-        name: 'Help',
-        component: () => import('../views/Help.vue'),
+        path: '/auth',
+        name: 'Auth',
+        component: () => import('../views/Auth.vue'),
+        meta: {
+            layout: 'auth',
+        },
     },
 ];
 
