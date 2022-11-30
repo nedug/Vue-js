@@ -1,9 +1,7 @@
 <template>
 
   <!--  <h3 class="card">{{ layout }}</h3>-->
-
   <!--    <main-layout></main-layout>-->
-
   <!--  <auth-layout></auth-layout>-->
 
   <component :is="layout + '-layout'" v-if="layout"></component>
