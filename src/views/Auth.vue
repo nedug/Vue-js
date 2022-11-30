@@ -31,7 +31,7 @@ export default {
   setup() {
 
     return { ...useLoginForm() }; // Вызываем собственный хук и с помощью spread раскрываем все поля объекта
-    
+
   },
 };
 </script>
