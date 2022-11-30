@@ -14,7 +14,6 @@
 import TheNavbar from '@/components/TheNavbar';
 
 export default {
-  name: 'MainLayout',
   components: {TheNavbar},
 };
 </script>
