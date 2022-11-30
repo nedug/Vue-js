@@ -13,6 +13,11 @@ const routes = [
         name: 'Help',
         component: () => import('../views/Help.vue'),
     },
+    {
+        path: '/help',
+        name: 'Help',
+        component: () => import('../views/Help.vue'),
+    },
 ];
 
 const router = createRouter({
