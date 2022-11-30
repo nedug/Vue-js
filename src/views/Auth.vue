@@ -15,7 +15,8 @@
       <small v-if="pError">{{ pError }}</small>
     </div>
 
-    <button class="btn primary" type="submit" :disabled="isSubmitting">Войти</button> <!-- Дизейблим кнопку пока идет отправка -->
+    <button class="btn primary" type="submit" :disabled="isSubmitting || isTooManyAttempts">Войти</button> <!-- Дизейблим кнопку пока идет отправка -->
+    <div class="text-danger" v-if="isTooManyAttempts">Слишком много попыток входа. Попробуйте позже</div>
   </form>
 
 </template>
@@ -30,9 +31,14 @@ export default {
   setup() {
 
     const { handleSubmit, isSubmitting, submitCount } = useForm(); // Валидация всей формы из пакета 'vee-validate'
+
     const onSubmit = handleSubmit(values => console.log(values));
+
     const isTooManyAttempts = computed(() => submitCount.value >= 3);
     // computed - используем, если нужно что то высчитать на основании других данных (переменных)
+
+    watch(isTooManyAttempts, value => value && setTimeout(() => submitCount.value = 0, 1500))
+    // watch - следим за какими то данной или переменной, и при изменении вызываем колбэк
 
     const { value: email, errorMessage: eError, handleBlur: eBlur } = useField( // Валидация полей из пакета 'vee-validate'
         'email',
