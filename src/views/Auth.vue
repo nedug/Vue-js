@@ -5,12 +5,14 @@
 
     <div class="form-control">
       <label for="email">Email</label>
-      <input type="email" id="email">
+      <input type="email" id="email" v-model="email">
+      <small v-if="eError">{{ eError }}</small>
     </div>
 
     <div class="form-control">
       <label for="password">Пароль</label>
-      <input type="password" id="password">
+      <input type="password" id="password" v-model="password">
+      <small v-if="pError">{{ pError }}</small>
     </div>
 
     <button class="btn primary" type="submit">Войти</button>
@@ -19,7 +21,20 @@
 </template>
 
 <script>
+import { useField } from 'vee-validate';
+
+
 export default {
+  setup() {
+
+    const { value: email, errorMessage: eError, handleBlur: eBlur } = useField('email'); // Валидация из пакета 'vee-validate'
+
+    const { value: password, errorMessage: pError, handleBlur: pBlur } = useField('password');
+
+    return {
+      email, password, eError, pError, eBlur, pBlur,
+    };
+  },
 
 };
 </script>
