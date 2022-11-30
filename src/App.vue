@@ -1,17 +1,17 @@
 <template>
 
-<!--  <h3 class="card">{{ layout }}</h3>-->
+  <!--  <h3 class="card">{{ layout }}</h3>-->
 
-<!--    <main-layout></main-layout>-->
+  <!--    <main-layout></main-layout>-->
 
   <!--  <auth-layout></auth-layout>-->
 
-  <component :is="layout + '-layout'"></component>
+  <component :is="layout + '-layout'" v-if="layout"></component>
 
 </template>
 
 <script>
-import {computed} from 'vue';
+import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import MainLayout from '@/layout/MainLayout';
 import AuthLayout from '@/layout/AuthLayout';
