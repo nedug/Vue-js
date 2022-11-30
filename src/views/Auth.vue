@@ -29,6 +29,7 @@ export default {
   setup() {
 
     const { handleSubmit, isSubmitting } = useForm(); // Валидация всей формы из пакета 'vee-validate'
+    const onSubmit = handleSubmit(values => console.log(values));
 
     const { value: email, errorMessage: eError, handleBlur: eBlur } = useField( // Валидация полей из пакета 'vee-validate'
         'email',
@@ -38,7 +39,6 @@ export default {
             .required()
             .email(),
     );
-
     const { value: password, errorMessage: pError, handleBlur: pBlur } = useField(
         'password',
         yup
@@ -47,8 +47,6 @@ export default {
             .required()
             .min(6),
     );
-
-    const onSubmit = handleSubmit(values => console.log(values));
 
     return {
       email, password, eError, pError, eBlur, pBlur, onSubmit,
