@@ -29,7 +29,9 @@ import { useLoginForm } from '@/use/login-form';
 
 export default {
   setup() {
+
     return { ...useLoginForm() }; // Вызываем собственный хук и с помощью spread раскрываем все поля объекта
+    
   },
 };
 </script>
