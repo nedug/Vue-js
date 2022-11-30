@@ -3,6 +3,7 @@ import { computed, watch } from 'vue';
 import * as yup from 'yup';
 
 
+// Создаем собственный хук
 export const useLoginForm = () => {
     const { handleSubmit, isSubmitting, submitCount } = useForm(); // Валидация всей формы из пакета 'vee-validate'
 
@@ -11,7 +12,7 @@ export const useLoginForm = () => {
     const isTooManyAttempts = computed(() => submitCount.value >= 3);
     // computed - используем, если нужно что то высчитать на основании других данных (переменных)
 
-    watch(isTooManyAttempts, value => value && setTimeout(() => submitCount.value = 0, 2000))
+    watch(isTooManyAttempts, value => value && setTimeout(() => submitCount.value = 0, 2000));
     // watch - следим за какими то данной или переменной, и при изменении вызываем колбэк
 
     const { value: email, errorMessage: eError, handleBlur: eBlur } = useField( // Валидация полей из пакета 'vee-validate'

@@ -15,21 +15,21 @@
       <small v-if="pError">{{ pError }}</small>
     </div>
 
-    <button class="btn primary" type="submit" :disabled="isSubmitting || isTooManyAttempts">Войти</button> <!-- Дизейблим кнопку пока идет отправка -->
+    <button class="btn primary" type="submit" :disabled="isSubmitting || isTooManyAttempts">Войти</button>
+    <!-- Дизейблим кнопку пока идет отправка -->
     <div class="text-danger" v-if="isTooManyAttempts">Слишком много попыток входа. Попробуйте позже</div>
   </form>
 
 </template>
 
 <script>
-import { computed, watch } from 'vue';
-import * as yup from 'yup';
-import { useField, useForm } from 'vee-validate';
+
+import { useLoginForm } from '@/use/login-form';
 
 
 export default {
   setup() {
-
+    return { ...useLoginForm() }; // Вызываем собственный хук и с помощью spread раскрываем все поля объекта
   },
 };
 </script>
