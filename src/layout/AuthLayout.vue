@@ -1,16 +1,13 @@
 <template>
 
   <div class="container">
-    <div class="card">
-
-    </div>
+    <router-view />  <!-- Обозначем место, куда вставится наш компонент из папки Views -->
   </div>
 
 </template>
 
 <script>
-export default {
-};
+export default {};
 </script>
 
 <style scoped>
