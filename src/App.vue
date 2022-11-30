@@ -22,7 +22,7 @@ export default {
     const route = useRoute();
 
     return {
-      layout: computed(() => route.meta.layout), // Доп данные, которые можем получить через route.meta.layout, и в зависимости от них показывать нужный компонент
+      layout: computed(() => route.meta.layout), // Доп данные, которые можем получаем через route.meta.layout, и в зависимости от них показывать нужный компонент
     };
 
   },
