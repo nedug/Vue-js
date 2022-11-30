@@ -7,7 +7,7 @@ const routes = [
         path: '/',
         name: 'Home',
         component: Home,
-        meta: { // Доп данные
+        meta: { // Доп данные, которые можем получить через route.meta.layout, и в зависимости от них показывать нужный компонент
             layout: 'main',
         },
     },
