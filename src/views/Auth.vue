@@ -15,12 +15,13 @@
       <small v-if="pError">{{ pError }}</small>
     </div>
 
-    <button class="btn primary" type="submit">Войти</button>
+    <button class="btn primary" type="submit" :disabled="isSubmitting">Войти</button> <!-- Дизейблим кнопку пока идет отправка -->
   </form>
 
 </template>
 
 <script>
+import { computed, watch } from 'vue';
 import * as yup from 'yup';
 import { useField, useForm } from 'vee-validate';
 
@@ -28,8 +29,10 @@ import { useField, useForm } from 'vee-validate';
 export default {
   setup() {
 
-    const { handleSubmit, isSubmitting } = useForm(); // Валидация всей формы из пакета 'vee-validate'
+    const { handleSubmit, isSubmitting, submitCount } = useForm(); // Валидация всей формы из пакета 'vee-validate'
     const onSubmit = handleSubmit(values => console.log(values));
+    const isTooManyAttempts = computed(() => submitCount.value >= 3);
+    // computed - используем, если нужно что то высчитать на основании других данных (переменных)
 
     const { value: email, errorMessage: eError, handleBlur: eBlur } = useField( // Валидация полей из пакета 'vee-validate'
         'email',
@@ -49,7 +52,7 @@ export default {
     );
 
     return {
-      email, password, eError, pError, eBlur, pBlur, onSubmit,
+      email, password, eError, pError, eBlur, pBlur, onSubmit, isSubmitting, isTooManyAttempts,
     };
   },
 
