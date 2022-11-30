@@ -36,16 +36,16 @@ export default {
         yup
             .string()
             .trim()
-            .required()
-            .email(),
+            .required('Введите ваш email')
+            .email('Введите корректный email'),
     );
     const { value: password, errorMessage: pError, handleBlur: pBlur } = useField(
         'password',
         yup
             .string()
             .trim()
-            .required()
-            .min(6),
+            .required('Введите ваш password')
+            .min(6, 'Пароль должен быть больше 6 символов'),
     );
 
     return {
