@@ -5,14 +5,14 @@
 
     <div class="form-control">
       <label for="email">Email</label>
-      <input type="email" id="email" v-model="email">
-      <small v-if="eError">{{ eError }}</small>
+      <input type="email" id="email" v-model="email"> <!-- Связываем v-model c нашей валидацией -->
+      <small v-if="eError">{{ eError }}</small> <!-- Выводим ошибку из валидации -->
     </div>
 
     <div class="form-control">
       <label for="password">Пароль</label>
-      <input type="password" id="password" v-model="password">
-      <small v-if="pError">{{ pError }}</small>
+      <input type="password" id="password" v-model="password"> <!-- Связываем v-model c нашей валидацией -->
+      <small v-if="pError">{{ pError }}</small> <!-- Выводим ошибку из валидации -->
     </div>
 
     <button class="btn primary" type="submit">Войти</button>
