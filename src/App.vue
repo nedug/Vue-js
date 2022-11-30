@@ -2,6 +2,8 @@
 
   <main-layout></main-layout>
 
+  <auth-layout></auth-layout>
+
 </template>
 
 <script>
