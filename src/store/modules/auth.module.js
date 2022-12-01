@@ -1,3 +1,6 @@
+import axios from 'axios';
+
+
 const TOKEN_KEY = 'jwt-token';
 
 export default {
@@ -27,7 +30,17 @@ export default {
 // Actions получают объект Context (context.commit, context.state, context.getters, context.dispatch)
 // Actions запускаются - store.dispatch('increment')
         async login({ commit }, payload) {
-            commit('setToken', 'TEST TOKEN');
+
+            const { data } = await axios.post(
+                `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.VUE_APP_FB_KEY}`,
+                payload,
+            );
+
+            commit('setToken', data.idToken);
+
+            // console.log(data);
+            // commit('setToken', 'TEST TOKEN');
+            // console.log(process.env.VUE_APP_FB_KEY);
         },
     },
 
