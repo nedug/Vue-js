@@ -42,6 +42,7 @@ export default {
 
             } catch (e) {
                 console.log(error(e.response.data.error.message));
+                throw new Error();
             }
             // console.log(data);
             // commit('setToken', 'TEST TOKEN');
