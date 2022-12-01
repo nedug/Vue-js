@@ -43,7 +43,7 @@ router.beforeEach((to, from, next) => {
 
     const requireAuth = to.meta.auth; // Получаем нужна ли авторизация перед каждым роутом
 
-    if (requireAuth && store.getters['auth/isAuth']) {
+    if (requireAuth && store.getters['auth/isAuth']) { // Также проверяем есть ли ТОКЕН авторизации
         next(); // Продолжаем роутинг, если авторизация есть
 
     } else if (requireAuth && !store.getters['auth/isAuth']) {
