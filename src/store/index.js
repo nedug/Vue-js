@@ -5,5 +5,5 @@ export default createStore({
     state: {},
     mutations: {},
     actions: {},
-    modules: {},
+    modules: {}, // Разделение Store на отдельные модули
 });
