@@ -2,18 +2,21 @@ import { useField, useForm } from 'vee-validate';
 import { computed, watch } from 'vue';
 import * as yup from 'yup';
 import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
 
 
 // Создаем собственный хук
 export const useLoginForm = () => {
 
     const store = useStore(); // Получаем store из Vuex
+    const router = useRouter(); // Получаем router из vue-router
 
     const { handleSubmit, isSubmitting, submitCount } = useForm(); // Валидация всей формы из пакета 'vee-validate'
 
     const onSubmit = handleSubmit(async values => { // Обработчик события Submit
         console.log('Form:', values);
         await store.dispatch('auth/login', values); // Вызываем actions (login) и передаем values нашей формы
+        router.push('/'); // Перенапаправляем на страницу HOME
     });
 
     const isTooManyAttempts = computed(() => submitCount.value >= 3);
