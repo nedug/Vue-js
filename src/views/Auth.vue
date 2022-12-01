@@ -25,10 +25,24 @@
 <script>
 
 import { useLoginForm } from '@/use/login-form';
+import { useRoute } from 'vue-router';
+import { useStore } from 'vuex';
+import { error } from '@/utils/error';
 
 
 export default {
   setup() {
+
+    const route = useRoute(); // Получаем параметры роута
+    const store = useStore(); // Получаем store из Vuex
+
+    if (route.query.message) {
+      store.dispatch(
+          'setMessage',
+          { value: error(route.query.message), type: 'warning' },
+          { root: true },
+      );
+    }
 
     return { ...useLoginForm() }; // Вызываем собственный хук и с помощью spread раскрываем все поля объекта
 
