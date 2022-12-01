@@ -14,7 +14,7 @@
         <a href="#">Сообщения</a>
       </li>
       <li>
-        <a href="#">Выход</a>
+        <a href="#" @click="logout">Выход</a>
       </li>
     </ul>
 
@@ -23,7 +23,22 @@
 </template>
 
 <script>
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
+
+
 export default {
+  setup() {
+    const store = useStore(); // Получаем store из Vuex
+    const router = useRouter(); // Получаем router из vue-router
+
+    return {
+      logout: () => {
+        store.commit('auth/logout'); // Запускаем мутацию logout
+        router.push('/auth'); // Перенапаправляем на страницу HOME
+      },
+    };
+  },
 
 };
 </script>
