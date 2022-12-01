@@ -1,9 +1,11 @@
+const TOKEN_KEY = 'jwt-token';
+
 export default {
     namespaced: true, // чтобы actions были локальными, а не глобальными
 
     state() { // Формируем локальный State
         return {
-            token: null,
+            token: localStorage.getItem(TOKEN_KEY), // Получаем ТОКЕН из localStorage
         };
     },
 
@@ -13,11 +15,11 @@ export default {
 // Вызов мутаций через commit
         setToken(state, token) {
             state.token = token;
-            localStorage.setItem('jwt-token', token);
+            localStorage.setItem(TOKEN_KEY, token);
         },
         logout(state) {
             state.token = null;
-            localStorage.removeItem('jwt-token');
+            localStorage.removeItem(TOKEN_KEY);
         },
 
     },
@@ -26,7 +28,7 @@ export default {
 // Actions получают объект Context (context.commit, context.state, context.getters, context.dispatch)
 // Actions запускаются - store.dispatch('increment')
         async login({ commit }, payload) {
-            commit('setToken', 'TEST TOKEN')
+            commit('setToken', 'TEST TOKEN');
         },
     },
 
