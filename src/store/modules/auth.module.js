@@ -30,7 +30,7 @@ export default {
     actions: { // Actions аналогичны мутациям, разница в том, что: actions меняют State через мутации и actions могут содержать асинхронные операции.
 // Actions получают объект Context (context.commit, context.state, context.getters, context.dispatch)
 // Actions запускаются - store.dispatch('increment')
-        async login({ commit }, payload) {
+        async login({ commit, dispatch }, payload) {
 
             try {
                 const { data } = await axios.post( // Делаем POST запрос на FIREBASE
@@ -41,6 +41,11 @@ export default {
                 commit('setToken', data.idToken); // Мутируем (сохраняем) ТОКЕН
 
             } catch (e) {
+                dispatch(
+                    'setMessage',
+                    { value: error(e.response.data.error.message), type: 'danger' },
+                    { root: true }, // для обращения к глобаьному actions - setMessage
+                );
                 console.log(error(e.response.data.error.message));
                 throw new Error();
             }
