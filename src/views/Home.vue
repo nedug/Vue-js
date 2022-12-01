@@ -6,13 +6,17 @@
          <button class="btn primary">Создать</button>
       </template>
 
+      <request-table :requests="[]"></request-table>
+
    </app-page>
 
 </template>
 
 <script>
 import AppPage from '@/components/ui/AppPage';
+import RequestTable from '@/components/request/RequestTable';
+
 export default {
-  components: { AppPage },
+  components: { AppPage, RequestTable },
 }
 </script>
