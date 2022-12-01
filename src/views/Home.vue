@@ -1,11 +1,14 @@
 <template>
-  <div class="card">
-    Home
-  </div>
+
+   <app-page title="Список заявок">
+
+   </app-page>
+
 </template>
 
 <script>
+import AppPage from '@/components/ui/AppPage';
 export default {
-  name: 'Home',
+  components: { AppPage },
 }
 </script>
