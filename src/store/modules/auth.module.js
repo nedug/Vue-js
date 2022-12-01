@@ -25,7 +25,7 @@ export default {
     actions: { // Actions аналогичны мутациям, разница в том, что: actions меняют State через мутации и actions могут содержать асинхронные операции.
 // Actions получают объект Context (context.commit, context.state, context.getters, context.dispatch)
 // Actions запускаются - store.dispatch('increment')
-        async login({ commit }) {
+        async login({ commit }, payload) {
             commit('setToken', 'TEST TOKEN')
         },
     },

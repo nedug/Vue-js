@@ -11,9 +11,9 @@ export const useLoginForm = () => {
 
     const { handleSubmit, isSubmitting, submitCount } = useForm(); // Валидация всей формы из пакета 'vee-validate'
 
-    const onSubmit = handleSubmit(values => { // Обработчик события Submit
+    const onSubmit = handleSubmit(async values => { // Обработчик события Submit
         console.log('Form:', values);
-        store.dispatch('auth/login'); // Вызываем actions - login
+        await store.dispatch('auth/login', values); // Вызываем actions (login) и передаем values нашей формы
     });
 
     const isTooManyAttempts = computed(() => submitCount.value >= 3);
