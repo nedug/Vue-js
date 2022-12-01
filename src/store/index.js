@@ -1,4 +1,5 @@
 import { createStore } from 'vuex';
+import auth from '@/store/modules/auth.module';
 
 
 export default createStore({
@@ -8,5 +9,7 @@ export default createStore({
 
     actions: {}, // Actions аналогичны мутациям, разница в том, что: actions меняют State через мутации и actions могут содержать асинхронные операции.
 
-    modules: {}, // Разделение Store на отдельные модули
+    modules: { // Разделение Store на отдельные модули
+        auth,
+    },
 });
