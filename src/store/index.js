@@ -1,8 +1,15 @@
-import { createStore } from 'vuex';
+import { createStore, createLogger } from 'vuex';
 import auth from '@/store/modules/auth.module';
 
 
+const plugins = [];
+if (process.env.NODE_ENV === 'development') {
+    plugins.push(createLogger()); // Запускаем Логгер только в режиме разработки
+}
+
 export default createStore({
+    plugins, // Плагины (к примеру Логгер)
+
     state: {}, // Формируем глобальный State
 
     mutations: {}, // Для мутации Store
