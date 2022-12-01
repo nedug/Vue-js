@@ -14,7 +14,7 @@
         <a href="#">Сообщения</a>
       </li>
       <li>
-        <a href="#" @click="logout">Выход</a>
+        <a href="#" @click.prevent="logout">Выход</a>
       </li>
     </ul>
   </nav>
