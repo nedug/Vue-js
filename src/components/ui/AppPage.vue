@@ -6,7 +6,8 @@
    <div class="card">
       <h1 class="card-title">
          {{ title }}
-         <slot name="header" />
+
+         <slot name="header" /> <!-- Slot для вставки в нужном месте -->
       </h1>
 
       <slot />
