@@ -9,6 +9,7 @@ const routes = [
         component: Home,
         meta: { // Доп данные, которые можем получить через route.meta.layout, и в зависимости от них показывать нужный компонент
             layout: 'main',
+            auth: true,
         },
     },
     {
@@ -17,6 +18,7 @@ const routes = [
         component: () => import('../views/Help.vue'),
         meta: {
             layout: 'main',
+            auth: true,
         },
     },
     {
@@ -25,6 +27,7 @@ const routes = [
         component: () => import('../views/Auth.vue'),
         meta: {
             layout: 'auth',
+            auth: false,
         },
     },
 ];
@@ -32,6 +35,10 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
     routes,
+});
+
+router.beforeEach((to, from, next) => {
+
 });
 
 export default router;
