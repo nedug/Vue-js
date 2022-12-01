@@ -39,6 +39,7 @@ export default {
                 );
 
                 commit('setToken', data.idToken); // Мутируем (сохраняем) ТОКЕН
+                commit('clearMessage', null, { root: true }); // Убираем ошибку
 
             } catch (e) {
                 dispatch(
