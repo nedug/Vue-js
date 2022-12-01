@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { error } from '@/utils/error';
 
 
 const TOKEN_KEY = 'jwt-token';
@@ -31,12 +32,18 @@ export default {
 // Actions запускаются - store.dispatch('increment')
         async login({ commit }, payload) {
 
-            const { data } = await axios.post(
-                `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.VUE_APP_FB_KEY}`,
-                payload,
-            );
+            try {
+                const { data } = await axios.post(
+                    `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.VUE_APP_FB_KEY}`,
+                    payload,
+                );
+                commit('setToken', data.idToken);
+                
+            } catch (e) {
+                console.log(error(e.response.data.error.message));
+            }
 
-            commit('setToken', data.idToken);
+
 
             // console.log(data);
             // commit('setToken', 'TEST TOKEN');
