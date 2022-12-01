@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
+import store from '@/store';
 
 
 const routes = [
@@ -9,7 +10,7 @@ const routes = [
         component: Home,
         meta: { // Доп данные, которые можем получить через route.meta.layout, и в зависимости от них показывать нужный компонент
             layout: 'main',
-            auth: true,
+            auth: true, // Роут будет доступен только при авторизации
         },
     },
     {
@@ -37,8 +38,20 @@ const router = createRouter({
     routes,
 });
 
+// Защита навигации, которая выполняется перед любой навигацией. Возвращает функцию, удаляющую зарегистрированную защиту.
 router.beforeEach((to, from, next) => {
 
+    const requireAuth = to.meta.auth; // Получаем нужна ли авторизация перед каждым роутом
+
+    if (requireAuth && store.getters['auth/isAuth']) {
+        next(); // Продолжаем роутинг, если авторизация есть
+
+    } else if (requireAuth && !store.getters['auth/isAuth']) {
+        next('auth?message=auth'); // Перенаправляем роутинг, если авторизации нет
+
+    } else {
+        next();
+    }
 });
 
 export default router;
