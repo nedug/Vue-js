@@ -6,7 +6,7 @@ export default createStore({
 
     mutations: {}, // Для мутации Store
 
-    actions: {},
+    actions: {}, // Actions аналогичны мутациям, разница в том, что: actions меняют State через мутации и actions могут содержать асинхронные операции.
 
     modules: {}, // Разделение Store на отдельные модули
 });
