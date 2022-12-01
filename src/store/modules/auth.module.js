@@ -33,18 +33,16 @@ export default {
         async login({ commit }, payload) {
 
             try {
-                const { data } = await axios.post(
+                const { data } = await axios.post( // Делаем POST запрос на FIREBASE
                     `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.VUE_APP_FB_KEY}`,
-                    payload,
+                    { ...payload, returnSecureToken: true },
                 );
-                commit('setToken', data.idToken);
-                
+
+                commit('setToken', data.idToken); // Мутируем (сохраняем) ТОКЕН
+
             } catch (e) {
                 console.log(error(e.response.data.error.message));
             }
-
-
-
             // console.log(data);
             // commit('setToken', 'TEST TOKEN');
             // console.log(process.env.VUE_APP_FB_KEY);
