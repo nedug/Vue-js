@@ -36,8 +36,8 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
     routes,
-    linkActiveClass: 'active',
-    linkExactActiveClass: 'active',
+    linkActiveClass: 'active', // Подсвечиваем активную ссылку
+    linkExactActiveClass: 'active', // Подсвечиваем активную ссылку
 });
 
 // Защита навигации, которая выполняется перед любой навигацией. Возвращает функцию, удаляющую зарегистрированную защиту.
