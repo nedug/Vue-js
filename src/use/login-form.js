@@ -1,13 +1,20 @@
 import { useField, useForm } from 'vee-validate';
 import { computed, watch } from 'vue';
 import * as yup from 'yup';
+import {useStore} from 'vuex';
 
 
 // Создаем собственный хук
 export const useLoginForm = () => {
+
+    const store = useStore(); // Получаем store из Vuex
+
     const { handleSubmit, isSubmitting, submitCount } = useForm(); // Валидация всей формы из пакета 'vee-validate'
 
-    const onSubmit = handleSubmit(values => console.log(values));
+    const onSubmit = handleSubmit(values => { // Обработчик события Submit
+        console.log('Form:', values);
+        store.dispatch('auth/login') // Вызываем actions - login
+    });
 
     const isTooManyAttempts = computed(() => submitCount.value >= 3);
     // computed - используем, если нужно что то высчитать на основании других данных (переменных)
