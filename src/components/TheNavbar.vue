@@ -17,7 +17,6 @@
         <a href="#" @click="logout">Выход</a>
       </li>
     </ul>
-
   </nav>
 
 </template>
