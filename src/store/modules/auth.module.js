@@ -21,7 +21,6 @@ export default {
             state.token = null;
             localStorage.removeItem(TOKEN_KEY);
         },
-
     },
 
     actions: { // Actions аналогичны мутациям, разница в том, что: actions меняют State через мутации и actions могут содержать асинхронные операции.
