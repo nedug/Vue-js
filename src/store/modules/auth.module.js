@@ -34,8 +34,8 @@ export default {
         token(state) {
             return state.token;
         },
-        isAuth(state) {
-            return !!state.token;
+        isAuth(_, getters) {
+            return !!getters.token;
         },
     },
 };
