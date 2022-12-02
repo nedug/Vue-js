@@ -10,9 +10,9 @@
 
       <teleport to="body"> <!-- Телепорт предоставляет способ для управления, в каком месте DOM нужно отрисовать часть HTML -->
          <app-modal v-if="modal" title="Создать заявку" @close="modal = false"> <!-- Вызываем событие close из компоненты -->
-            <request-modal @created="modal = false">
 
-            </request-modal>
+            <request-modal @created="modal = false"></request-modal>
+
          </app-modal>
       </teleport>
 
