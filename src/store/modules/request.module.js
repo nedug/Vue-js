@@ -48,5 +48,9 @@ export default {
         },
     },
 
-    getters: {},
+    getters: {
+        requests(state) { // Для получения всех заявок
+            return state.requests;
+        },
+    },
 };

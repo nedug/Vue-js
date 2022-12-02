@@ -6,7 +6,7 @@
          <button class="btn primary" @click="modal = true">Создать</button>
       </template>
 
-      <request-table :requests="[]"></request-table>
+      <request-table :requests="requests"></request-table> <!-- Отображаем все заявки -->
 
       <teleport to="body"> <!-- Телепорт предоставляет способ для управления, в каком месте DOM нужно отрисовать часть HTML -->
          <app-modal v-if="modal" title="Создать заявку" @close="modal = false"> <!-- Вызываем событие close из компоненты -->
@@ -23,17 +23,21 @@
 <script>
 import AppPage from '@/components/ui/AppPage';
 import RequestTable from '@/components/request/RequestTable';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import AppModal from '@/components/ui/AppModal';
 import RequestModal from '@/components/request/RequestModal';
+import { useStore } from 'vuex';
 
 
 export default {
    setup() {
+      const store = useStore();
       const modal = ref(false); // отвечает за видимость модального окна
 
+      const requests = computed(() => store.getters['request/requests']); // Получаем список всех заявок
+
       return {
-         modal,
+         modal, requests,
       };
    },
 
