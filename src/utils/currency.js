@@ -1,5 +1,3 @@
-const formatter = new Intl.NumberFormat('ru-RU', { currency: 'RUB', style: 'currency' });
+export const currency = value => formatter.format(value);
 
-export function currency(value) {
-    return formatter.format(value);
-}
+const formatter = new Intl.NumberFormat('ru-RU', { currency: 'RUB', style: 'currency' });
