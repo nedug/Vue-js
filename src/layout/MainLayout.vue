@@ -3,6 +3,7 @@
   <the-navbar></the-navbar> <!-- Отображаем компонент TheNavbar -->
 
   <div class="container with-nav">
+     <app-message></app-message>
     <router-view />  <!-- Обозначем место, куда вставится наш компонент из папки Views -->
   </div>
 
@@ -10,10 +11,11 @@
 
 <script>
 import TheNavbar from '@/components/TheNavbar';
+import AppMessage from '@/components/ui/AppMessage';
 
 
 export default {
-  components: { TheNavbar },
+  components: { AppMessage, TheNavbar },
 };
 </script>
 
