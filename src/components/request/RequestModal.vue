@@ -31,7 +31,7 @@
 
     <button class="btn primary" :disabled="isSubmitting">Создать</button>
   </form>
-   
+
 </template>
 
 <script>
