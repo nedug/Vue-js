@@ -9,7 +9,11 @@
       <request-table :requests="[]"></request-table>
 
       <teleport to="body"> <!-- Телепорт предоставляет способ для управления, в каком месте DOM нужно отрисовать часть HTML -->
-         <app-modal v-if="modal" title="Создать заявку" @close="modal = false"></app-modal> <!-- Вызываем событие close из компоненты -->
+         <app-modal v-if="modal" title="Создать заявку" @close="modal = false"> <!-- Вызываем событие close из компоненты -->
+            <request-modal>
+
+            </request-modal>
+         </app-modal>
       </teleport>
 
    </app-page>
@@ -21,6 +25,7 @@ import AppPage from '@/components/ui/AppPage';
 import RequestTable from '@/components/request/RequestTable';
 import { ref } from 'vue';
 import AppModal from '@/components/ui/AppModal';
+import RequestModal from '@/components/request/RequestModal';
 
 
 export default {
@@ -32,6 +37,6 @@ export default {
       };
    },
 
-   components: { AppPage, RequestTable, AppModal },
+   components: { AppPage, RequestTable, AppModal, RequestModal },
 };
 </script>
