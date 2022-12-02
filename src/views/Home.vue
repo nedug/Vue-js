@@ -23,7 +23,7 @@
 <script>
 import AppPage from '@/components/ui/AppPage';
 import RequestTable from '@/components/request/RequestTable';
-import { computed, ref } from 'vue';
+import { computed, ref, onMounted } from 'vue';
 import AppModal from '@/components/ui/AppModal';
 import RequestModal from '@/components/request/RequestModal';
 import { useStore } from 'vuex';
@@ -33,11 +33,18 @@ export default {
    setup() {
       const store = useStore();
       const modal = ref(false); // отвечает за видимость модального окна
+      const loading = ref(false); // отвечает за loading
+
+      onMounted(async () => {
+         loading.value = true;
+         await store.dispatch('request/load');
+         loading.value = false;
+      });
 
       const requests = computed(() => store.getters['request/requests']); // Получаем список всех заявок
 
       return {
-         modal, requests,
+         modal, requests, loading,
       };
    },
 

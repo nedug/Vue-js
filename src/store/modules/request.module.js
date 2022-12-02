@@ -46,6 +46,24 @@ export default {
                 );
             }
         },
+
+        async load({ commit, dispatch }) {
+
+            try {
+                const token = store.getters['auth/token'];
+
+                const { data } = await requestAxios.get(`/requests.json?auth=${token}`);
+
+                // commit('addRequest', { ...payload, id: data.name });
+
+            } catch (e) {
+                dispatch(
+                    'setMessage',
+                    { value: e.message, type: 'danger' },
+                    { root: true },
+                );
+            }
+        },
     },
 
     getters: {
