@@ -3,9 +3,13 @@ import * as yup from 'yup';
 
 
 // Создаем собственный хук
-export const useRequestForm = () => {
+export const useRequestForm = (fn) => {
 
-    const { handleSubmit, isSubmitting } = useForm(); // Валидация всей формы из пакета 'vee-validate'
+    const { handleSubmit, isSubmitting } = useForm( // Валидация всей формы из пакета 'vee-validate'
+        {
+            initialValues: { status: 'active' }, // Для начальных значений формы
+        },
+    );
 
     const { value: fio, errorMessage: fError, handleBlur: fBlur } = useField( // Валидация полей из пакета 'vee-validate'
         'fio',
@@ -33,15 +37,7 @@ export const useRequestForm = () => {
 
     const { value: status } = useField('status');
 
-    const onSubmit = handleSubmit(async values => { // Обработчик события Submit
-        try {
-            // console.log('Form:', values);
-            // await store.dispatch('auth/login', values); // Вызываем actions (login) и передаем values нашей формы
-            // router.push('/'); // Перенапаправляем на страницу HOME
-
-        } catch (e) {
-        }
-    });
+    const onSubmit = handleSubmit(fn);
 
 
     return {

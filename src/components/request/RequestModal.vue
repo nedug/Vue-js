@@ -42,12 +42,13 @@ import { useStore } from 'vuex';
 
 export default {
    emits: ['created'],
-   setup(_, { emit }) {
+
+   setup(_, context) { // setup принимает props и context (нету досутпа к this)
       const store = useStore();
 
       const submit = async values => {
          await store.dispatch('request/create', values);
-         emit('created');
+         context.emit('created'); // Передаем событие наверх родителю через context
       };
 
       return {
