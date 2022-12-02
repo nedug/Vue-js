@@ -4,11 +4,11 @@
 <!--   </div>-->
 
    <div class="card">
-      <h1 class="card-title">
+      <h2 class="card-title">
          {{ title }}
 
          <slot name="header" /> <!-- Slot для вставки в нужном месте -->
-      </h1>
+      </h2>
 
       <slot />
    </div>

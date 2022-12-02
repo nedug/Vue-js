@@ -1,7 +1,7 @@
 <template>
 
   <nav class="navbar">
-    <h3>Online Bank</h3>
+    <h1>Online Bank</h1>
 
     <ul class="navbar-menu">
       <li>
