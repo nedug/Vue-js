@@ -1,8 +1,8 @@
-// Создаем собственный хук
 import { useField, useForm } from 'vee-validate';
 import * as yup from 'yup';
 
 
+// Создаем собственный хук
 export const useRequestForm = () => {
 
     const { handleSubmit, isSubmitting } = useForm(); // Валидация всей формы из пакета 'vee-validate'
@@ -12,8 +12,7 @@ export const useRequestForm = () => {
         yup
             .string()
             .trim()
-            .required('Введите ваш email')
-            .email('Введите корректный email'),
+            .required('Введите ваше ФИО'),
     );
 
     const { value: phone, errorMessage: pError, handleBlur: pBlur } = useField(
@@ -21,27 +20,18 @@ export const useRequestForm = () => {
         yup
             .string()
             .trim()
-            .required('Введите ваш email')
-            .email('Введите корректный email'),
+            .required('Введите ваш телефон'),
     );
 
     const { value: amount, errorMessage: aError, handleBlur: aBlur } = useField(
         'amount',
         yup
-            .string()
-            .trim()
-            .required('Введите ваш email')
-            .email('Введите корректный email'),
+            .number()
+            .required('Введите сумму')
+            .min(0, 'Сумма не может быть меньше 0'),
     );
 
-    const { value: status } = useField(
-        'status',
-        yup
-            .string()
-            .trim()
-            .required('Введите ваш email')
-            .email('Введите корректный email'),
-    );
+    const { value: status } = useField('status');
 
     const onSubmit = handleSubmit(async values => { // Обработчик события Submit
         try {
