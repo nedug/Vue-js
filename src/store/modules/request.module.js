@@ -1,6 +1,5 @@
 import { requestAxios } from '@/axios/request';
 import store from '@/store';
-import { error } from '@/utils/error';
 
 
 export default {
@@ -26,13 +25,16 @@ export default {
 
             try {
 
-                const token = store.getters.token;
+                const token = store.getters['auth/token']; // Получаем ТОКЕН из Store
 
-                const { data } = await requestAxios.post(
-                    `/requests.json?auth=${token}`,
-                    { ...payload, returnSecureToken: true },
+                const { data } = await requestAxios.post( // Создаем запись в БД Firebase
+                    `/requests.json?auth=${token}`, // Нужно смотерть на правила в Firebase
+                    payload,
                 );
-                dispatch(
+
+                console.log(data);
+
+                dispatch( // Показываем сообщение
                     'setMessage',
                     { value: 'Заявка успешно создана!', type: 'primary' },
                     { root: true },
