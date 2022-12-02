@@ -1,6 +1,8 @@
 <template>
 
-   <app-page title="Список заявок">
+   <app-loader v-if="loading" />
+
+   <app-page title="Список заявок" v-else>
 
       <template #header> <!-- для вставки в slot header -->
          <button class="btn primary" @click="modal = true">Создать</button>
@@ -27,6 +29,7 @@ import { computed, ref, onMounted } from 'vue';
 import AppModal from '@/components/ui/AppModal';
 import RequestModal from '@/components/request/RequestModal';
 import { useStore } from 'vuex';
+import AppLoader from '@/components/ui/AppLoader';
 
 
 export default {
@@ -48,6 +51,6 @@ export default {
       };
    },
 
-   components: { AppPage, RequestTable, AppModal, RequestModal },
+   components: { AppPage, RequestTable, AppModal, RequestModal, AppLoader },
 };
 </script>

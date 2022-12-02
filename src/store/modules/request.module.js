@@ -54,7 +54,9 @@ export default {
 
                 const { data } = await requestAxios.get(`/requests.json?auth=${token}`);
 
-                // commit('addRequest', { ...payload, id: data.name });
+                const requests = Object.keys(data).map(id => ({ ...data[id], id })); // Формируем объект всех заявок
+
+                commit('setRequest', requests); // Сохраняем все заявки
 
             } catch (e) {
                 dispatch(
