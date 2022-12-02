@@ -47,7 +47,8 @@ export default {
       const store = useStore();
 
       const submit = async values => {
-         await store.dispatch('request/create', values);
+         await store.dispatch('request/create', values); // Создаем запись в БД Firebase
+
          context.emit('created'); // Передаем событие наверх родителю через context
       };
 
