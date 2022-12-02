@@ -22,7 +22,6 @@ export default {
 
     actions: {
         async create({ commit, dispatch }, payload) {
-
             try {
                 const token = store.getters['auth/token']; // Получаем ТОКЕН из Store
 
@@ -46,9 +45,7 @@ export default {
                 );
             }
         },
-
         async load({ commit, dispatch }) {
-
             try {
                 const token = store.getters['auth/token'];
 
@@ -57,7 +54,6 @@ export default {
                 const requests = Object.keys(data).map(id => ({ ...data[id], id })); // Формируем объект всех заявок
 
                 commit('setRequest', requests); // Сохраняем все заявки
-
             } catch (e) {
                 dispatch(
                     'setMessage',
