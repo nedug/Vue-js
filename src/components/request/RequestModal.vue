@@ -1,4 +1,5 @@
 <template>
+
   <form @submit.prevent="onSubmit">
     <div class="form-control" :class="{invalid: fError}">
       <label for="fio">ФИО</label>
@@ -30,6 +31,7 @@
 
     <button class="btn primary" :disabled="isSubmitting">Создать</button>
   </form>
+   
 </template>
 
 <script>
