@@ -24,7 +24,6 @@ export default {
         async create({ commit, dispatch }, payload) {
 
             try {
-
                 const token = store.getters['auth/token']; // Получаем ТОКЕН из Store
 
                 const { data } = await requestAxios.post( // Создаем запись в БД Firebase
@@ -32,14 +31,13 @@ export default {
                     payload,
                 );
 
-                console.log(data);
+                commit('addRequest', { ...payload, id: data.name }); // Добавляем заявку с ID от сервера
 
                 dispatch( // Показываем сообщение
                     'setMessage',
                     { value: 'Заявка успешно создана!', type: 'primary' },
                     { root: true },
                 );
-
             } catch (e) {
                 dispatch(
                     'setMessage',
