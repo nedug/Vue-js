@@ -1,7 +1,7 @@
 <template>
-<!--   <div class="breadcrumbs" v-if="back">-->
-<!--      <router-link to="/" class="text-white">Вернуться к списку заявок</router-link>-->
-<!--   </div>-->
+   <div class="breadcrumbs" v-if="back">
+      <router-link to="/" class="text-white">Вернуться к списку заявок</router-link>
+   </div>
 
    <div class="card">
       <h2 class="card-title">
@@ -21,7 +21,7 @@ export default {
          type: String,
          required: true,
       },
-      back: {
+      back: { // для добавления ссылки назад
          type: Boolean,
          default: false,
       },
