@@ -50,7 +50,7 @@ export default {
 
       const requests = computed(() => store.getters['request/requests'] // Получаем список всех заявок c фильтром
           .filter(r => filter.value.name ? r.fio.toLowerCase().includes(filter.value.name.toLowerCase()) : r) // фильтр имени
-          .filter(r => filter.value.status ? r.status.toLowerCase().includes(filter.value.status.toLowerCase()) : r) // фильтр статуса
+          .filter(r => filter.value.status ? r.status.toLowerCase().includes(filter.value.status.toLowerCase()) : r), // фильтр статуса
       );
 
       return {
