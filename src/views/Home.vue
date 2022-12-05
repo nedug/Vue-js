@@ -8,6 +8,8 @@
          <button class="btn primary" @click="modal = true">Создать</button>
       </template>
 
+      <request-filter></request-filter>
+
       <request-table :requests="requests"></request-table> <!-- Отображаем все заявки -->
 
       <teleport to="body"> <!-- Телепорт предоставляет способ для управления, в каком месте DOM нужно отрисовать часть HTML -->
@@ -30,6 +32,7 @@ import AppModal from '@/components/ui/AppModal';
 import RequestModal from '@/components/request/RequestModal';
 import { useStore } from 'vuex';
 import AppLoader from '@/components/ui/AppLoader';
+import RequestFilter from '@/components/request/RequestFilter';
 
 
 export default {
@@ -51,6 +54,6 @@ export default {
       };
    },
 
-   components: { AppPage, RequestTable, AppModal, RequestModal, AppLoader },
+   components: { AppPage, RequestTable, AppModal, RequestModal, AppLoader, RequestFilter },
 };
 </script>
