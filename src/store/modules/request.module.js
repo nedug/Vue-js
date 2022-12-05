@@ -62,7 +62,7 @@ export default {
                 );
             }
         },
-        async loadById({ commit, dispatch }, id) {
+        async loadOne({ commit, dispatch }, id) {
             try {
                 const token = store.getters['auth/token'];
 

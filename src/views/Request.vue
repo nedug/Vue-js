@@ -33,7 +33,7 @@ import { useRoute, useRouter } from 'vue-router';
 import AppPage from '../components/ui/AppPage';
 import AppLoader from '../components/ui/AppLoader';
 import AppStatus from '../components/ui/AppStatus';
-import { currency } from '../utils/currency';
+import { currency } from '@/utils/currency';
 
 
 export default {
