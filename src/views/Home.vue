@@ -8,7 +8,7 @@
          <button class="btn primary" @click="modal = true">Создать</button>
       </template>
 
-      <request-filter></request-filter>
+      <request-filter v-model="filter"></request-filter>
 
       <request-table :requests="requests"></request-table> <!-- Отображаем все заявки -->
 
@@ -40,6 +40,7 @@ export default {
       const store = useStore();
       const modal = ref(false); // отвечает за видимость модального окна
       const loading = ref(false); // отвечает за loading
+      const filter = ref({}); // отвечает за фильтрацию
 
       onMounted(async () => {
          loading.value = true;
@@ -47,10 +48,13 @@ export default {
          loading.value = false;
       });
 
-      const requests = computed(() => store.getters['request/requests']); // Получаем список всех заявок
+      const requests = computed(() => store.getters['request/requests'] // Получаем список всех заявок c фильтром
+          .filter(r => filter.value.name ? r.fio.toLowerCase().includes(filter.value.name.toLowerCase()) : r)
+          .filter(r => filter.value.status ? r.status.toLowerCase().includes(filter.value.status.toLowerCase()) : r)
+      );
 
       return {
-         modal, requests, loading,
+         modal, requests, loading, filter,
       };
    },
 
