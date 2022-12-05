@@ -95,11 +95,11 @@ export default {
                 );
             }
         },
-        async update({ dispatch }, payload) {
+        async update({ dispatch }, request) {
             try {
                 const token = store.getters['auth/token'];
 
-                await requestAxios.put(`/requests/${id}.json?auth=${token}`, payload);
+                await requestAxios.put(`/requests/${request.id}.json?auth=${token}`, request);
 
                 dispatch('setMessage', {
                     value: 'Заявка обновлена',

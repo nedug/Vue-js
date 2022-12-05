@@ -8,7 +8,7 @@
          <button class="btn primary" @click="modal = true">Создать</button>
       </template>
 
-      <request-filter v-model="filter"></request-filter>
+      <request-filter v-if="requests.length !== 0" v-model="filter"></request-filter>
 
       <request-table :requests="requests"></request-table> <!-- Отображаем все заявки -->
 
