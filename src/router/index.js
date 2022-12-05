@@ -34,7 +34,7 @@ const routes = [
     {
         path: '/auth',
         name: 'Auth',
-        component: () => import('../views/Auth.vue'),
+        component: () => import('../views/Request.vue'),
         meta: {
             layout: 'auth',
             auth: false,
