@@ -1,4 +1,5 @@
 <template>
+   
    <app-loader v-if="loading"></app-loader>
    <app-page back title="Заявка" v-else-if="request">
       <p><strong>Имя владельца</strong>: {{ request.fio }}</p>
@@ -19,11 +20,14 @@
       </div>
 
       <button class="btn danger" @click="remove">Удалить</button>
+
       <button class="btn" @click="update" v-if="hasChanges">Обновить</button>
    </app-page>
+
    <h3 v-else class="text-center text-white">
       Заявки с ID = {{ $route.params.id }} нет.
    </h3>
+
 </template>
 
 <script>
