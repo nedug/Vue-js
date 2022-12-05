@@ -43,6 +43,7 @@ export default {
       const filter = ref({}); // отвечает за фильтрацию
 
       onMounted(async () => {
+         console.log('!!!onMounted!!!');
          loading.value = true;
          await store.dispatch('request/load');
          loading.value = false;
@@ -50,7 +51,7 @@ export default {
 
       const requests = computed(() => store.getters['request/requests'] // Получаем список всех заявок c фильтром
           .filter(r => filter.value.name ? r.fio.toLowerCase().includes(filter.value.name.toLowerCase()) : r) // фильтр имени
-          .filter(r => filter.value.status ? r.status.toLowerCase().includes(filter.value.status.toLowerCase()) : r), // фильтр статуса
+          .filter(r => filter.value.status ? filter.value.status === r.status : r), // фильтр статуса
       );
 
       return {

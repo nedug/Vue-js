@@ -18,6 +18,9 @@ export default {
         addRequest(state, request) {
             state.requests.push(request);
         },
+        removeRequest(state, id) {
+            state.requests = state.requests.filter(r => r.id !== id);
+        },
     },
 
     actions: {
@@ -51,6 +54,8 @@ export default {
 
                 const { data } = await requestAxios.get(`/requests.json?auth=${token}`);
 
+                if (!data) return;
+
                 const requests = Object.keys(data).map(id => ({ ...data[id], id })); // Формируем объект всех заявок
 
                 commit('setRequest', requests); // Сохраняем все заявки
@@ -83,10 +88,12 @@ export default {
 
                 await requestAxios.delete(`/requests/${id}.json?auth=${token}`);
 
+                commit('removeRequest', id); // Удаляем заявку
+
                 dispatch('setMessage', {
                     value: 'Заявка удалена',
-                    type: 'primary'
-                }, {root: true})
+                    type: 'primary',
+                }, { root: true });
             } catch (e) {
                 dispatch(
                     'setMessage',
@@ -103,8 +110,8 @@ export default {
 
                 dispatch('setMessage', {
                     value: 'Заявка обновлена',
-                    type: 'primary'
-                }, {root: true})
+                    type: 'primary',
+                }, { root: true });
             } catch (e) {
                 dispatch(
                     'setMessage',
