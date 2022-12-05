@@ -38,7 +38,7 @@ import { currency } from '../utils/currency';
 
 export default {
    setup() {
-      const route = useRoute();
+      const route = useRoute(); // получаем текущий роут
       const router = useRouter();
       const store = useStore();
       const status = ref();
