@@ -77,6 +77,42 @@ export default {
                 );
             }
         },
+        async remove({ commit, dispatch }, id) {
+            try {
+                const token = store.getters['auth/token'];
+
+                await requestAxios.delete(`/requests/${id}.json?auth=${token}`);
+
+                dispatch('setMessage', {
+                    value: 'Заявка удалена',
+                    type: 'primary'
+                }, {root: true})
+            } catch (e) {
+                dispatch(
+                    'setMessage',
+                    { value: e.message, type: 'danger' },
+                    { root: true },
+                );
+            }
+        },
+        async update({ dispatch }, payload) {
+            try {
+                const token = store.getters['auth/token'];
+
+                await requestAxios.put(`/requests/${id}.json?auth=${token}`, payload);
+
+                dispatch('setMessage', {
+                    value: 'Заявка обновлена',
+                    type: 'primary'
+                }, {root: true})
+            } catch (e) {
+                dispatch(
+                    'setMessage',
+                    { value: e.message, type: 'danger' },
+                    { root: true },
+                );
+            }
+        },
     },
 
     getters: {
