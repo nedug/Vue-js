@@ -1,5 +1,5 @@
 <template>
-   
+
    <app-loader v-if="loading"></app-loader>
    <app-page back title="Заявка" v-else-if="request">
       <p><strong>Имя владельца</strong>: {{ request.fio }}</p>
