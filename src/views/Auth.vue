@@ -3,6 +3,8 @@
   <form class="card" @submit.prevent="onSubmit">
     <h1>Войти в систему</h1>
 
+     <h4 class="text-danger">Для теста используйте пресохраненный логин и пароль</h4>
+
     <div :class="['form-control', {invalid: eError}]"> <!-- Первый класс из массива всегда, второй только при наличии ошибки -->
       <label for="email">Email</label>
       <input type="email" id="email" v-model="email" @blur="eBlur"> <!-- Связываем v-model c нашей валидацией, Слушаем событие blur -->
