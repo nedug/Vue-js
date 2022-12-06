@@ -30,4 +30,4 @@ Technologies and libraries in development:
 
 ***
 
-![](https://github.com/nedug/cv-alexander-r/blob/main/src/common/img/todo.jpg?raw=true)
+![](https://github.com/nedug/cv-alexander-r/blob/main/src/common/img/bank.png?raw=true)
