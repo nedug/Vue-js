@@ -1,7 +1,7 @@
 <template>
    <div class="filter">
       <div class="form-control">
-         <input type="text" placeholder="Начните писать имя" v-model="name">
+         <input type="text" placeholder="Поиск..." v-model="name">
       </div>
       <div class="form-control">
          <select v-model="status">

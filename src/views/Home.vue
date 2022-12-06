@@ -8,7 +8,7 @@
          <button class="btn primary" @click="modal = true">Создать</button>
       </template>
 
-      <request-filter v-if="requests.length !== 0" v-model="filter"></request-filter>
+      <request-filter v-if="requestsAll.length !== 0" v-model="filter"></request-filter>
 
       <request-table :requests="requests"></request-table> <!-- Отображаем все заявки -->
 
@@ -48,13 +48,15 @@ export default {
          loading.value = false;
       });
 
+      const requestsAll = computed(() => store.getters['request/requests']);
+
       const requests = computed(() => store.getters['request/requests'] // Получаем список всех заявок c фильтром
           .filter(r => filter.value.name ? r.fio.toLowerCase().includes(filter.value.name.toLowerCase()) : r) // фильтр имени
           .filter(r => filter.value.status ? filter.value.status === r.status : r), // фильтр статуса
       );
 
       return {
-         modal, requests, loading, filter,
+         modal, requests, requestsAll, loading, filter,
       };
    },
 
