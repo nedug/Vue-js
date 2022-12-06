@@ -26,7 +26,7 @@ export default {
 
    setup(_, { emit }) {
       const name = ref();
-      const status = ref();
+      const status = ref('Выберите статус');
 
       watch([name, status], values => {
          emit('update:modelValue', {
@@ -35,7 +35,7 @@ export default {
          });
       });
 
-      const isActive = computed(() => name.value || status.value);
+      const isActive = computed(() => status.value !== 'Выберите статус' ? name.value || status.value : false);
 
       return {
          name,
