@@ -43,7 +43,6 @@ export default {
       const filter = ref({}); // отвечает за фильтрацию
 
       onMounted(async () => {
-         console.log('!!!onMounted!!!');
          loading.value = true;
          await store.dispatch('request/load');
          loading.value = false;
