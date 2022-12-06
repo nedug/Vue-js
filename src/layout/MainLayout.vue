@@ -1,11 +1,11 @@
 <template>
 
-  <the-navbar></the-navbar> <!-- Отображаем компонент TheNavbar -->
+   <the-navbar></the-navbar> <!-- Отображаем компонент TheNavbar -->
 
-  <div class="container with-nav">
-     <app-message></app-message>
-    <router-view />  <!-- Обозначем место, куда вставится наш компонент из папки Views -->
-  </div>
+   <div class="container with-nav">
+      <app-message></app-message>
+      <router-view />  <!-- Обозначем место, куда вставится наш компонент из папки Views -->
+   </div>
 
 </template>
 
@@ -15,7 +15,7 @@ import AppMessage from '@/components/ui/AppMessage';
 
 
 export default {
-  components: { AppMessage, TheNavbar },
+   components: { AppMessage, TheNavbar },
 };
 </script>
 
