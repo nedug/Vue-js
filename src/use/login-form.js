@@ -11,7 +11,12 @@ export const useLoginForm = () => {
     const store = useStore(); // Получаем store из Vuex
     const router = useRouter(); // Получаем router из vue-router
 
-    const { handleSubmit, isSubmitting, submitCount } = useForm(); // Валидация всей формы из пакета 'vee-validate'
+    const { handleSubmit, isSubmitting, submitCount } = useForm({ // Валидация всей формы из пакета 'vee-validate'
+        initialValues: {
+            email: 'test@mail.ru',
+            password: '123123',
+        },
+    });
 
     const onSubmit = handleSubmit(async values => { // Обработчик события Submit
         try {
